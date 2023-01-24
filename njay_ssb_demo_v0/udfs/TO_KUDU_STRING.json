@@ -1,0 +1,8 @@
+{
+  "name" : "TO_KUDU_STRING",
+  "description" : "Convert string to Kudu format.",
+  "language" : "JavaScript",
+  "output_type" : "STRING",
+  "input_types" : [ "STRING" ],
+  "code" : "function TO_KUDU_STRING(input){\n   return input;\n}\nTO_KUDU_STRING($p0);  // this line must exist\n"
+}

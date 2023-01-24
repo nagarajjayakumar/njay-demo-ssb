@@ -1,0 +1,14 @@
+{
+  "job_name" : "create_tables",
+  "api_endpoints" : [ ],
+  "sql" : "\nDROP TABLE IF EXISTS fraudulent_txn;\nCREATE TABLE fraudulent_txn (\n  `event_time` VARCHAR(2147483647),\n  `diff_ms` BIGINT,\n  `account_id` VARCHAR(2147483647),\n  `txn1_id` VARCHAR(2147483647),\n  `txn2_id` VARCHAR(2147483647),\n  `amount` INT,\n  `lat` DOUBLE,\n  `lon` DOUBLE,\n  `lat1` DOUBLE,\n  `lon1` DOUBLE,\n  `distance` DECIMAL(32, 16),\n  `f_name` VARCHAR(2147483647),\n  `l_name` VARCHAR(2147483647),\n  `email` VARCHAR(2147483647),\n  `card` VARCHAR(2147483647),\n  `gender` VARCHAR(2147483647),\n  `phone` VARCHAR(2147483647)\n) WITH (\n  'connector' = 'kafka: edge2ai-kafka',\n  'format' = 'json',\n  'scan.startup.mode' = 'latest-offset',\n  'topic' = 'fraudulent_txn'\n)\n;\n\nDROP TABLE IF EXISTS transactions;\nCREATE TABLE transactions (\n  `ts` BIGINT,\n  `account_id` VARCHAR(2147483647),\n  `transaction_id` VARCHAR(2147483647),\n  `amount` INT,\n  `lat` DOUBLE,\n  `lon` DOUBLE,\n  `fraud_score` DOUBLE,\n  `model_response` ROW<`fraud_score` DOUBLE>,\n  `event_time` AS CAST(from_unixtime(floor(`ts`/1000)) AS TIMESTAMP(3)),\n  WATERMARK FOR `event_time` AS `event_time` - INTERVAL '3' SECOND\n) WITH (\n  'connector' = 'kafka: edge2ai-kafka',\n  'scan.transform.js.code' = 'var parsed = JSON.parse(record.value); parsed.ts = new java.text.SimpleDateFormat(''yyyy-MM-dd HH:mm:ss'').parse(parsed.ts).getTime(); JSON.stringify(parsed);',\n  'format' = 'json',\n  'topic' = 'transactions',\n  'scan.startup.mode' = 'latest-offset'\n)\n;\n",
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "parallelism" : 0,
+    "sample_interval" : 0,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "log_config" : null
+  }
+}

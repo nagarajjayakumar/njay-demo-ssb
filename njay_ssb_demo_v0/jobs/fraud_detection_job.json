@@ -1,0 +1,14 @@
+{
+  "job_name" : "fraud_detection_job",
+  "api_endpoints" : [ ],
+  "sql" : "DROP TEMPORARY VIEW IF EXISTS frauds;\nCREATE TEMPORARY VIEW frauds AS\nSELECT\n  cast(txn1.event_time as string) as event_time,\n  txn2.ts - txn1.ts as diff_ms,\n  txn1.account_id,\n  txn1.transaction_id as txn1_id,\n  txn2.transaction_id as txn2_id,\n  txn2.amount,\n  txn2.lat,\n  txn2.lon,\n  txn1.lat as lat1,\n  txn1.lon as lon1,\n  HAVETOKM(txn1.lat, txn1.lon, txn2.lat, txn2.lon) as distance,\n  c.f_name, c.l_name, c.email, c.card, c.gender, c.phone\nFROM transactions as txn1\nJOIN transactions as txn2\n  ON txn1.account_id = txn2.account_id\nJOIN `edge2ai-kudu`.`default_database`.`default.customers` as c\n  ON c.acc_id = txn1.account_id\nWHERE txn1.transaction_id <> txn2.transaction_id\n  AND txn2.event_time BETWEEN txn1.event_time AND txn1.event_time + INTERVAL '10' MINUTE\n  AND HAVETOKM(txn1.lat, txn1.lon, txn2.lat, txn2.lon) > 1\n;\n\nINSERT INTO fraudulent_txn\nSELECT *\nFROM frauds\n;\n\nINSERT INTO `edge2ai-kudu`.`default_database`.`default.fraudulent_txn` (event_time, acc_id, transaction_id, f_name, l_name, email, gender, phone, card, lat, lon, amount)\nSELECT\n  to_kudu_string(event_time),\n  to_kudu_string(account_id),\n  to_kudu_string(txn2_id),\n  to_kudu_string(f_name),\n  to_kudu_string(l_name),\n  to_kudu_string(email),\n  to_kudu_string(gender),\n  to_kudu_string(phone),\n  to_kudu_string(card),\n  lat,\n  lon,\n  amount\nFROM frauds\n;\n",
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "parallelism" : 0,
+    "sample_interval" : 0,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "log_config" : null
+  }
+}

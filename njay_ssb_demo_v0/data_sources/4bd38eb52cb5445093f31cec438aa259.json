@@ -1,0 +1,13 @@
+{
+  "id" : "4bd38eb52cb5445093f31cec438aa259",
+  "name" : "edge2ai-kafka",
+  "type" : "kafka",
+  "properties" : {
+    "brokers" : "cdp.34.193.77.120.nip.io:9092",
+    "protocol" : "plaintext",
+    "username" : null,
+    "password" : null,
+    "mechanism" : "KERBEROS",
+    "ssl.truststore.location" : "/opt/cloudera/security/jks/truststore.jks"
+  }
+}

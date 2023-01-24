@@ -1,0 +1,13 @@
+{
+  "id" : "dbf42b9a61ba4c7b86fad9f75a6d6d25",
+  "name" : "edge2ai-kudu",
+  "type" : "catalog",
+  "properties" : {
+    "catalog_type" : "kudu",
+    "kudu.masters" : "cdp.34.193.77.120.nip.io:7051",
+    "table_filters" : [ {
+      "database_filter" : ".*",
+      "table_filter" : ".*"
+    } ]
+  }
+}
