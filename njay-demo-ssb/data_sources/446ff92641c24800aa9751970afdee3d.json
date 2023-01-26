@@ -1,0 +1,13 @@
+{
+  "id" : "446ff92641c24800aa9751970afdee3d",
+  "name" : "njay-demo-ssb-kafka-ds",
+  "type" : "kafka",
+  "properties" : {
+    "brokers" : "njay-demo-kafka-corebroker2.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker1.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker0.njay-dem.a465-9q4k.cloudera.site:9093",
+    "protocol" : "sasl",
+    "mechanism" : "PLAIN",
+    "username" : "njayakumar",
+    "password" : "Aru08dec@123",
+    "ssl.truststore.location" : "/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks"
+  }
+}

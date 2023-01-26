@@ -1,0 +1,12 @@
+{
+  "id" : "16f471762c314489bbabc8e18dd12a4a",
+  "name" : "njay-demo-ssb-sr-catalog",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "registry",
+    "kafka.provider.id" : "446ff92641c24800aa9751970afdee3d",
+    "registry.address" : "https://njay-demo-kafka-master0.njay-dem.a465-9q4k.cloudera.site:7790/api/v1",
+    "registry.ssl.enabled" : true
+  }
+}

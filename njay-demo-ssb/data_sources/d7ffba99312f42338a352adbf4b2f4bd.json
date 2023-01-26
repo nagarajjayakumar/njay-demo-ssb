@@ -1,0 +1,10 @@
+{
+  "id" : "d7ffba99312f42338a352adbf4b2f4bd",
+  "name" : "njay-demo-ssb-kudu-catalog",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "kudu",
+    "kudu.masters" : "njay-demo-datamart-master10.njay-dem.a465-9q4k.cloudera.site:7051,njay-demo-datamart-master20.njay-dem.a465-9q4k.cloudera.site:7051,njay-demo-datamart-master30.njay-dem.a465-9q4k.cloudera.site:7051"
+  }
+}

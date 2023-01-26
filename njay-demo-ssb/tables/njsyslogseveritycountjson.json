@@ -1,0 +1,27 @@
+{
+  "metadata" : {
+    "properties.auto.offset.reset" : "earliest",
+    "schema.0.data-type" : "BIGINT",
+    "properties.sasl.mechanism" : "PLAIN",
+    "schema.2.name" : "severityCount",
+    "format" : "json",
+    "properties.security.protocol" : "SASL_SSL",
+    "schema.1.name" : "windowEnd",
+    "scan.startup.mode" : "earliest-offset",
+    "schema.1.data-type" : "TIMESTAMP(3) NOT NULL",
+    "properties.sasl.jaas.config" : "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"njayakumar\" password=\"Aru08dec@123\";",
+    "properties.bootstrap.servers" : "njay-demo-kafka-corebroker2.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker1.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker0.njay-dem.a465-9q4k.cloudera.site:9093",
+    "schema.3.data-type" : "VARCHAR(2147483647)",
+    "connector" : "kafka",
+    "schema.2.data-type" : "BIGINT",
+    "schema.3.name" : "severityDesc",
+    "properties.request.timeout.ms" : "120000",
+    "properties.ssl.truststore.location" : "/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks",
+    "properties.transaction.timeout.ms" : "900000",
+    "topic" : "nj-syslog-severity-count-json",
+    "schema.0.name" : "severity"
+  },
+  "type" : "ssb",
+  "table_name" : "njsyslogseveritycountjson",
+  "transform_code_b64_encoded" : false
+}
