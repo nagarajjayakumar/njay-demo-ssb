@@ -7,7 +7,7 @@
     "protocol" : "sasl",
     "mechanism" : "PLAIN",
     "username" : "njayakumar",
-    "password" : "Aru08dec@123",
+    "password" : "**************",
     "ssl.truststore.location" : "/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks"
   }
 }
