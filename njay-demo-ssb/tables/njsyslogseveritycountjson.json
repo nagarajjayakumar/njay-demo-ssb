@@ -9,7 +9,7 @@
     "schema.1.name" : "windowEnd",
     "scan.startup.mode" : "earliest-offset",
     "schema.1.data-type" : "TIMESTAMP(3) NOT NULL",
-    "properties.sasl.jaas.config" : "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"njayakumar\" password=\"Aru08dec@123\";",
+    "properties.sasl.jaas.config" : "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"njayakumar\" password=\"A*************";",
     "properties.bootstrap.servers" : "njay-demo-kafka-corebroker2.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker1.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker0.njay-dem.a465-9q4k.cloudera.site:9093",
     "schema.3.data-type" : "VARCHAR(2147483647)",
     "connector" : "kafka",
