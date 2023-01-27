@@ -1,0 +1,14 @@
+{
+  "job_name" : "job_by_njayakumar_at_1674816843338",
+  "api_endpoints" : [ ],
+  "sql" : "DESC hackekgdata1",
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "parallelism" : 1,
+    "sample_interval" : 1000,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "log_config" : null
+  }
+}
