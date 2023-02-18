@@ -1,7 +1,7 @@
 {
   "job_name" : "prod_job",
   "api_endpoints" : [ ],
-  "sql" : "\nSELECT\n  a.severity as severity,\n  HOP_END(a.event_time, INTERVAL '5' SECOND, INTERVAL '30' SECOND) as windowEnd,\n  count(*) as severityCount,\n  b.severity_desc as severityDesc\nFROM njsyslogjson  a join `njay-demo-ssb-kudu-catalog`.`default_database`.`default.syslog_severity` FOR SYSTEM_TIME AS OF PROCTIME() b ON a.severity = b.severity\nGROUP BY\n  a.severity,b.severity_desc, \n  HOP(a.event_time, INTERVAL '5' SECOND, INTERVAL '30' SECOND)\n  \n",
+  "sql" : " INSERT INTO deviceiotevents3breach \n SELECT\n  window_start, window_end,\n  a.metric as metric,\n  a.site_id as site_id,\n  a.device_id as device_id,\n  count(*) as metric_count\nFROM\n  TABLE(\n    HOP(TABLE deviceiotevents3,\n        DESCRIPTOR(event_ts),\n        INTERVAL '5' SECOND,\n        INTERVAL '30' SECOND)) a\n  JOIN `njay-demo-ssb-kudu-catalog`.`default_database`.`default.device_metrics_severity`   b\n    ON a.metric = b.metric\n    and a.site_id = b.site_id and a.device_id = b.device_id\nWHERE\n    a.metric_value > b.threshold\nGROUP BY\n  a.window_start, a.window_end, a.metric,a.site_id,a.device_id",
   "mv_config" : {
     "name" : "prod_job",
     "retention" : 300,

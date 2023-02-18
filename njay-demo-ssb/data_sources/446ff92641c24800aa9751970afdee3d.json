@@ -3,11 +3,11 @@
   "name" : "njay-demo-ssb-kafka-ds",
   "type" : "kafka",
   "properties" : {
-    "brokers" : "njay-demo-kafka-corebroker2.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker1.njay-dem.a465-9q4k.cloudera.site:9093,njay-demo-kafka-corebroker0.njay-dem.a465-9q4k.cloudera.site:9093",
+    "brokers" : "njay-verizon-workshop-sr-smm-dh-corebroker0.njay-ver.a465-9q4k.cloudera.site:9093,njay-verizon-workshop-sr-smm-dh-corebroker1.njay-ver.a465-9q4k.cloudera.site:9093,njay-verizon-workshop-sr-smm-dh-corebroker2.njay-ver.a465-9q4k.cloudera.site:9093",
     "protocol" : "sasl",
     "mechanism" : "PLAIN",
+    "ssl.truststore.location" : "/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks",
     "username" : "njayakumar",
-    "password" : "Aru08dec@123",
-    "ssl.truststore.location" : "/var/lib/cloudera-scm-agent/agent-cert/cm-auto-global_truststore.jks"
+    "password" : "Arjun08dec@123"
   }
 }

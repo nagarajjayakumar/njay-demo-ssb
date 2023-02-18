@@ -1,18 +1,76 @@
 {
   "job_name" : "nj_demo_ssb_jobs",
-  "api_endpoints" : [ ],
-  "sql" : "select * from njsyslogjson where severity  = 3\n",
+  "api_endpoints" : [ {
+    "endpoint" : "breacg",
+    "code" : "SELECT \"window_start\", \"window_end\", \"metric\", \"site_id\", \"device_id\", \"metric_count\" FROM mv_79956e61_nj_demo_ssb_jobs",
+    "builder_data" : {
+      "rules" : {
+        "condition" : "AND",
+        "rules" : [ ]
+      },
+      "selectedColumns" : [ {
+        "index" : 1,
+        "name" : "window_start",
+        "alias" : "window_start",
+        "expr" : null,
+        "typeName" : "TIMESTAMP_WITHOUT_TIME_ZONE",
+        "watermark" : false,
+        "primaryKey" : false
+      }, {
+        "index" : 2,
+        "name" : "window_end",
+        "alias" : "window_end",
+        "expr" : null,
+        "typeName" : "TIMESTAMP_WITHOUT_TIME_ZONE",
+        "watermark" : false,
+        "primaryKey" : false
+      }, {
+        "index" : 3,
+        "name" : "metric",
+        "alias" : "metric",
+        "expr" : null,
+        "typeName" : "VARCHAR",
+        "watermark" : false,
+        "primaryKey" : false
+      }, {
+        "index" : 4,
+        "name" : "site_id",
+        "alias" : "site_id",
+        "expr" : null,
+        "typeName" : "VARCHAR",
+        "watermark" : false,
+        "primaryKey" : false
+      }, {
+        "index" : 5,
+        "name" : "device_id",
+        "alias" : "device_id",
+        "expr" : null,
+        "typeName" : "VARCHAR",
+        "watermark" : false,
+        "primaryKey" : false
+      }, {
+        "index" : 6,
+        "name" : "metric_count",
+        "alias" : "metric_count",
+        "expr" : null,
+        "typeName" : "BIGINT",
+        "watermark" : false,
+        "primaryKey" : false
+      } ]
+    }
+  } ],
+  "sql" : "  \nSELECT\n  window_start, window_end,\n  a.metric,\n  a.site_id,\n  a.device_id,\n  count(*) as metric_count\nFROM\n  TABLE(\n    HOP(TABLE deviceiotevents3,\n        DESCRIPTOR(event_ts),\n        INTERVAL '5' SECOND,\n        INTERVAL '10' SECOND)) a\n  JOIN `njay-demo-ssb-kudu-catalog`.`default_database`.`default.device_metrics_severity`   b\n    ON a.metric = b.metric\n    and a.site_id = b.site_id and a.device_id = b.device_id\nWHERE\n    a.metric_value > b.threshold\nGROUP BY\n  a.window_start, a.window_end, a.metric,a.site_id,a.device_id",
   "mv_config" : {
     "name" : "nj_demo_ssb_jobs",
     "retention" : 300,
     "min_row_retention_count" : 0,
     "recreate" : false,
-    "key_column_name" : null,
-    "api_key" : null,
-    "ignore_nulls" : false,
+    "key_column_name" : "site_id",
+    "api_key" : "2388c6dc-335e-4adb-9ee3-d8d6d2b17dc4",
+    "ignore_nulls" : true,
     "require_restart" : false,
     "batch_size" : 0,
-    "enabled" : false
+    "enabled" : true
   },
   "runtime_config" : {
     "execution_mode" : "SESSION",

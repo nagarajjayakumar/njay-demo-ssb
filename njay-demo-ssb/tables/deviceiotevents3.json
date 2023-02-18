@@ -1,0 +1,49 @@
+{
+  "metadata" : {
+    "schema.7.data-type" : "VARCHAR(2147483647)",
+    "schema.0.data-type" : "VARCHAR(2147483647)",
+    "schema.9.name" : "ingest_ts",
+    "schema.1.name" : "site_id",
+    "scan.startup.mode" : "earliest-offset",
+    "schema.4.name" : "device_id",
+    "schema.3.data-type" : "VARCHAR(2147483647)",
+    "schema.3.name" : "acquisition_timestamp",
+    "schema.7.name" : "msg_mth",
+    "properties.request.timeout.ms" : "120000",
+    "schema.watermark.0.strategy.data-type" : "TIMESTAMP(3)",
+    "schema.6.name" : "msg_yr",
+    "schema.5.data-type" : "DOUBLE",
+    "schema.10.expr" : "TO_TIMESTAMP_LTZ(`kafka_input_ts`, 3)",
+    "schema.0.name" : "msg_dt",
+    "schema.5.name" : "metric_value",
+    "schema.watermark.0.strategy.expr" : "`event_ts` - INTERVAL '3' SECOND",
+    "properties.auto.offset.reset" : "earliest",
+    "schema.8.data-type" : "BIGINT",
+    "schema.2.name" : "metric",
+    "format" : "json",
+    "schema.6.data-type" : "BIGINT",
+    "schema.1.data-type" : "VARCHAR(2147483647)",
+    "connector" : "kafka: njay-demo-ssb-kafka-ds",
+    "schema.2.data-type" : "VARCHAR(2147483647)",
+    "schema.10.data-type" : "TIMESTAMP(3) WITH LOCAL TIME ZONE",
+    "schema.watermark.0.rowtime" : "event_ts",
+    "properties.transaction.timeout.ms" : "900000",
+    "topic" : "device_iot_events_3",
+    "schema.9.data-type" : "VARCHAR(2147483647)",
+    "schema.4.data-type" : "VARCHAR(2147483647)",
+    "schema.10.name" : "event_ts",
+    "schema.8.name" : "kafka_input_ts",
+    "ssb.schema.text" : "{\n  \"type\": \"record\",\n  \"name\": \"inferredSchema\",\n  \"fields\": [\n    {\n      \"name\": \"msg_dt\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2023-01-17\\\"'\"\n    },\n    {\n      \"name\": \"site_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"SITE_001\\\"'\"\n    },\n    {\n      \"name\": \"metric\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"METRIC_001\\\"'\"\n    },\n    {\n      \"name\": \"acquisition_timestamp\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2023-01-17 15:20:30.012\\\"'\"\n    },\n    {\n      \"name\": \"device_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"DEV_1\\\"'\"\n    },\n    {\n      \"name\": \"metric_value\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '0.14453'\"\n    },\n    {\n      \"name\": \"msg_yr\",\n      \"type\": \"long\",\n      \"doc\": \"Type inferred from '2023'\"\n    },\n    {\n      \"name\": \"msg_mth\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2023-01\\\"'\"\n    },\n    {\n      \"name\": \"kafka_input_ts\",\n      \"type\": \"long\",\n      \"doc\": \"Type inferred from '1673968830012'\"\n    },\n    {\n      \"name\": \"ingest_ts\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2023-02-16 00:12:18.984\\\"'\"\n    }\n  ]\n}",
+    "ssb.watermark_spec" : {
+      "timestamp_column" : "kafka_input_ts",
+      "rowtime_column" : "event_ts"
+    },
+    "ssb.properties" : {
+      "auto.offset.reset" : "earliest"
+    }
+  },
+  "type" : "ssb",
+  "table_name" : "deviceiotevents3",
+  "transform_code_b64_encoded" : false,
+  "transform_code" : ""
+}

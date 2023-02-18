@@ -1,0 +1,25 @@
+{
+  "metadata" : {
+    "schema.5.name" : "metric_count",
+    "schema.0.data-type" : "TIMESTAMP(3) NOT NULL",
+    "schema.2.name" : "metric",
+    "schema.1.name" : "window_end",
+    "schema.4.name" : "device_id",
+    "schema.1.data-type" : "TIMESTAMP(3) NOT NULL",
+    "schema.3.data-type" : "VARCHAR(2147483647) NOT NULL",
+    "connector" : "upsert-kafka: njay-demo-ssb-kafka-ds",
+    "schema.2.data-type" : "VARCHAR(2147483647) NOT NULL",
+    "schema.3.name" : "site_id",
+    "value.format" : "json",
+    "key.format" : "json",
+    "schema.primary-key.name" : "PK_-1698522855",
+    "schema.primary-key.columns" : "window_start,window_end,metric,site_id,device_id,metric_count",
+    "topic" : "device_iot_events_3_breach",
+    "schema.5.data-type" : "BIGINT NOT NULL",
+    "schema.4.data-type" : "VARCHAR(2147483647) NOT NULL",
+    "schema.0.name" : "window_start"
+  },
+  "type" : "ssb",
+  "table_name" : "deviceiotevents3breach",
+  "transform_code_b64_encoded" : false
+}

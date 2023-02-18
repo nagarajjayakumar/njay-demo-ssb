@@ -6,7 +6,7 @@
     "table_filters" : [ ],
     "catalog_type" : "registry",
     "kafka.provider.id" : "446ff92641c24800aa9751970afdee3d",
-    "registry.address" : "https://njay-demo-kafka-master0.njay-dem.a465-9q4k.cloudera.site:7790/api/v1",
+    "registry.address" : "https://njay-verizon-workshop-sr-smm-dh-master0.njay-ver.a465-9q4k.cloudera.site:7790/api/v1",
     "registry.ssl.enabled" : true
   }
 }
